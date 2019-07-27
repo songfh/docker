@@ -1,0 +1,29 @@
+FROM nvidia/cuda:10.1-runtime-ubuntu18.04
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+            bzip2 curl sudo binutils && \
+    rm -rf /var/lib/apt/lists/*
+
+RUN  curl -fsSL http://developer.download.nvidia.com/compute/redist/cudnn/v7.6.0/cudnn-10.1-linux-x64-v7.6.0.64.tgz -O && \
+    tar --no-same-owner -xzf cudnn-10.1-linux-x64-v7.6.0.64.tgz -C /usr/local && \
+    rm cudnn-10.1-linux-x64-v7.6.0.64.tgz && \
+    ldconfig
+
+
+RUN curl -o ~/miniconda.sh -O https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh  && \
+     chmod +x ~/miniconda.sh && \
+     ~/miniconda.sh -b -p /opt/conda && \
+     rm ~/miniconda.sh && \
+     /opt/conda/bin/conda upgrade --all && \
+     /opt/conda/bin/conda install conda-build conda-verify && \
+     /opt/conda/bin/conda clean -ya
+
+RUN /opt/conda/bin/conda install --download-only cmake make zlib
+RUN /opt/conda/bin/conda install --download-only -c numba llvmdev=8.0.0
+
+ENV PATH /opt/conda/bin:$PATH
+ENV LD_LIBRARY_PATH /usr/local/nvidia/lib:/usr/local/nvidia/lib64
+ENV CONDA_BLD_PATH /tmp
+
+WORKDIR /workspace
+RUN chmod -R a+w /workspace
