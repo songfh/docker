@@ -2,19 +2,18 @@ FROM pytorch/pytorch:1.1.0-cuda10.0-cudnn7.5-runtime
 
 RUN apt-get update && apt-get -y upgrade
 
-RUN conda install -c anaconda \
-                 libopencv \
-                 opencv \
-                 py-opencv \
+RUN conda install -c anaconda libopencv opencv py-opencv
+
+RUN conda install -c \
+                 conda-forge \
                  matplotlib \
                  pydensecrf \
                  Pillow \
                  torch \
                  torchvision \
-                 conda-forge \
                  libiconv \
                  uwsgi \
-                 flask \ 
+                 flask \
                  cython \
                  tensorflow-gpu
 
