@@ -1,6 +1,6 @@
 FROM pytorch/pytorch:1.1.0-cuda10.0-cudnn7.5-runtime
 
-RUN apt-get update && apt-get upgrade
+RUN apt-get update && apt-get -y upgrade
 
 RUN conda install -c anaconda \
                  libopencv \
