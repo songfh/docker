@@ -4,7 +4,7 @@ RUN apt-get update && apt-get -y upgrade
 
 RUN conda install -c anaconda libopencv opencv py-opencv
 
-RUN conda install -c conda-forge \
+RUN conda install -c conda-forge 
 RUN conda install -c \
                  matplotlib \
                  pydensecrf \
