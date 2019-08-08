@@ -4,9 +4,9 @@ RUN apt-get update && apt-get -y upgrade
 
 RUN conda install -c anaconda libopencv opencv py-opencv
 
-#RUN conda install -c conda-forge libiconv
-#RUN conda install -c conda-forge uwsgi
 RUN pip install matplotlib pydensecrf Pillow torch torchvision flask 
+RUN conda install -c conda-forge libiconv
+RUN conda install -c conda-forge uwsgi
 RUN conda install -c cython
 RUN conda install -c tensorflow-gpu
 
