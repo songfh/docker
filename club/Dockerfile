@@ -7,7 +7,8 @@ RUN conda install -c anaconda libopencv opencv py-opencv
 RUN pip install matplotlib pydensecrf Pillow torch torchvision flask 
 RUN conda install -c conda-forge libiconv
 RUN conda install -c conda-forge uwsgi
-RUN conda install -c cython
+#RUN conda install -c cython
+RUN pip install Cython --install-option="--no-cython-compile"
 RUN conda install -c tensorflow-gpu
 
 RUN mkdir /tmp \
