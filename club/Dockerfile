@@ -11,8 +11,7 @@ RUN conda install -c conda-forge uwsgi
 RUN pip install Cython --install-option="--no-cython-compile"
 RUN conda install tensorflow-gpu
 
-RUN mkdir /tmp \
-    && cd /tmp \
+RUN cd /tmp \
     && git clone https://github.com/thtrieu/darkflow.git \
     && cd darkflow \
     && python3 setup.py build_ext --inplace \
