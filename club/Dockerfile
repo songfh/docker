@@ -9,7 +9,7 @@ RUN conda install -c conda-forge libiconv
 RUN conda install -c conda-forge uwsgi
 #RUN conda install -c cython
 RUN pip install Cython --install-option="--no-cython-compile"
-RUN conda install -c tensorflow-gpu
+RUN conda install tensorflow-gpu
 
 RUN mkdir /tmp \
     && cd /tmp \
