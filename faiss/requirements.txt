@@ -1,0 +1,8 @@
+flask
+faiss-cpu
+uwsgi
+redis
+flask-wtf
+flask-cors
+requests
+uwsgidecorators
